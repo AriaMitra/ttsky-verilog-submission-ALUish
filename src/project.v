@@ -17,9 +17,59 @@ module tt_um_sortaALUStorygirlATGC (
 );
 
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
-  assign uio_out = 0;
-  assign uio_oe  = 0;
+    assign uio_out = 0;
+    assign uio_oe  = 0;
+    wire [3:0] A,B;
+	wire temp;
+	wire [3:0] add, negA, negB, sub;
+	wire [7:0] multi;
+	reg [7:0] result;
+	assign uo_out = result;
+	assign A = ui_in [7:4];
+	assign B = ui_in [3:0];
+    four_add(.a(A), .b(B), .carin(0), .sum(add), .carout(temp));
+    two_comp (.num(A), .negnum(negA));
+    two_comp (.num(B), .negnum(negB));
+    four_sub (.a(A), .b(B), .sub(sub));
+    mult(.x(A), .y(B), .z(multi));
+	always @(*) begin
+		if (uio_in[7]) begin //addition
+			result [7:4] = add;
+			result [3:0] = 0;
+		end
+		else if (uio_in[6]) begin //negative of A
+			result[7:4] = negA;
+			result [3:0] = 0;
+		end
+        else if (uio_in[5]) begin //negative of B
+	        result[7:4] = negB;
+	        result [3:0] = 0;
+        end
+        else if (uio_in[4]) begin //subtraction
+	        result[7:4] = sub;
+	        result [3:0] = 0;
+        end
+        else if (uio_in[3]) begin //multiplication - takes all out pins
+	        result = multi;
+        end
+        else if (uio_in[2]) begin //and
+	        result[7:4] = A &B;
+            result [3:0] = 0;
+        end
+        else if (uio_in[1]) begin //or
+	        result[7:4] = A|B;
+	        result [3:0] = 0;
+        end
+        else if (uio_in[0]) begin //xor
+        	result[7:4] = A^B;
+        	result [3:0] = 0;
+        end
+        else begin
+        	result = 0;
+        end
+    end
+
+
 
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, clk, rst_n, 1'b0};
