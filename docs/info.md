@@ -9,12 +9,13 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This is a sort of 4-bit ALU that can do addition, subtraction, negatives, multiplication, AND, OR, and XOR.
 
 ## How to test
 
-Explain how to use your project
+To use it, put in the number values into the input pins and the number result will come out of the output pins.
+
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+There isn't really any external hardware needed.
