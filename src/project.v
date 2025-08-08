@@ -27,11 +27,11 @@ module tt_um_sortaALUStorygirlATGC (
 	assign uo_out = result;
 	assign A = ui_in [7:4];
 	assign B = ui_in [3:0];
-    four_add(.a(A), .b(B), .carin(0), .sum(add), .carout(temp));
-    two_comp (.num(A), .negnum(negA));
-    two_comp (.num(B), .negnum(negB));
-    four_sub (.a(A), .b(B), .sub(sub));
-    mult(.x(A), .y(B), .z(multi));
+    four_add v1(.a(A), .b(B), .carin(0), .sum(add), .carout(temp));
+    two_comp v2(.num(A), .negnum(negA));
+    two_comp v3(.num(B), .negnum(negB));
+    four_sub v4(.a(A), .b(B), .sub(sub));
+    mult v5(.x(A), .y(B), .z(multi));
 	always @(*) begin
 		if (uio_in[7]) begin //addition
 			result [7:4] = add;
