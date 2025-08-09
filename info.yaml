@@ -3,7 +3,7 @@ project:
   title:        "Sorta 4-Bit ALU"      # Project title
   author:       "Aria Mitra"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "This is a sort of ALU that can do 4 bit addition, subtraction, multiplication, and bitwise operators like AND, OR, and XOR."      # One line description of what your project does
+  description:  "This is a kind of ALU that can do 4 bit addition, subtraction, multiplication, and bitwise operators like AND, OR, and XOR."      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
